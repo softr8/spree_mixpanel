@@ -1,0 +1,24 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:mixpanel_settings) %>
+<% end %>
+
+
+<%= form_tag admin_mixpanel_settings_path, :method => :put  do |form| %>
+  <div id="preferences" data-hook>
+    <fieldset class="general no-border-top">
+      <div class="row">
+        <div class="alpha six columns">
+              <div class="field">
+                <%= label_tag(:project_token, Spree.t(:project_token) + ': ') %>
+                <%= preference_field_tag(:project_token, @config[:project_token], :type => :string) %>
+              </div>
+        </div>
+      </div>
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+        <%= submit_tag Spree.t('actions.update'), class: 'icon-refresh' %>
+      </div>
+    </fieldset>
+  </div>
+<% end %>
