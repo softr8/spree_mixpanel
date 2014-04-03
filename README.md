@@ -3,6 +3,7 @@ SpreeMixpanel
 
 Mixpanel is the most advanced analytics platform for mobile & web. Instead of measuring pageviews, it helps you analyze the actions people take in your application. An action can be anything - someone uploading a picture, playing a video, or sharing a post, for example.
 
+
 Installation
 ------------
 
