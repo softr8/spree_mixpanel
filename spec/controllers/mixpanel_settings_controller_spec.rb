@@ -15,7 +15,5 @@ describe Spree::Admin::MixpanelSettingsController do
       expect(Spree::MixpanelConfiguration.new.send(:project_token)).to eq '123'
       expect(response).to be_redirect
     end
-
   end
-
 end
