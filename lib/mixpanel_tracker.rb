@@ -1,5 +1,5 @@
 require 'mixpanel-ruby'
-
+require 'pry'
 class MixpanelTracker
 
   def initialize
