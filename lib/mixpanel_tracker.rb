@@ -16,19 +16,19 @@ class MixpanelTracker
   #    "$created": "2013-04-01T13:20:00",
   #    "$phone": "4805551212"
 
-  def create_user_profile user_id, options = {}
-    @tracker.people.set(user_id, options)
+  def create_user_profile user_id, properties = {}
+    @tracker.people.set(user_id, properties)
   end
 
 
   # Records a payment to the given user profile
-  def track_charge user_id, total, options = {}
-    @tracker.people.track_charge(user_id, total, options)
+  def track_charge user_id, total, properties = {}
+    @tracker.people.track_charge(user_id, total, properties)
   end
 
   # A call to track is a report that an event has occurred.
-  def track user_id, event, options = {}
-    @tracker.track(user_id, event, options)
+  def track user_id, event, properties = {}
+    @tracker.track(user_id, event, properties)
   end
 
 
