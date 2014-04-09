@@ -3,6 +3,6 @@ Spree::ProductsController.class_eval do
 
   private
   def mixpanel_track_search
-    MixpanelTracker.new.track(spree_current_user.id, 'Product search', { keywords: params[:keywords] })
+    MixpanelTracker.new.track(spree_current_user.id, 'Product search', { keywords: params[:keywords] }) if params[:keywords]
   end
 end
