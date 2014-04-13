@@ -12,6 +12,6 @@ Spree::ProductsController.class_eval do
   end
 
   def mixpanel_track_product_show
-    MixpanelTracker.new.track(spree_current_user.id, 'Product Show', @product.name)
+    MixpanelTracker.new.track(spree_current_user.id, 'Product Show', {name: @product.name})
   end
 end
