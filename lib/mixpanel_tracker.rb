@@ -16,19 +16,23 @@ class MixpanelTracker
   #    "$phone": "4805551212"
 
   def create_user_profile user_id, properties = {}
-    @tracker.people.set(user_id, properties)
+    unless ['development', 'test'].include?(Rails.env)
+      @tracker.people.set(user_id, properties)
+    end
   end
-
 
   # Records a payment to the given user profile
   def track_charge user_id, total, properties = {}
-    @tracker.people.track_charge(user_id, total, properties)
+    unless ['development', 'test'].include?(Rails.env)
+      @tracker.people.track_charge(user_id, total, properties)
+    end
   end
 
   # A call to track is a report that an event has occurred.
   def track user_id, event, properties = {}
-    @tracker.track(user_id, event, properties)
+    unless ['development', 'test'].include?(Rails.env)
+      @tracker.track(user_id, event, properties)
+    end
   end
-
 
 end

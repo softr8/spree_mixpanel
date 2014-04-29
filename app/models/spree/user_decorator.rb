@@ -3,6 +3,10 @@ Spree::User.class_eval do
 
   private
   def mixpanel_create_user_profile
-    MixpanelTracker.new.create_user_profile(id, {'$email' => email })
+    properties = {
+        '$email' => email,
+        "$created" => created_at,
+    }
+    MixpanelTracker.new.create_user_profile(id, properties)
   end
 end
