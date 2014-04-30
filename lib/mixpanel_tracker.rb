@@ -37,4 +37,16 @@ class MixpanelTracker
     end
   end
 
+  def async
+    if ENV['SPREE_MIXPANEL_STRICT']
+      super
+    else
+      begin
+        super
+      rescue Exception => e
+        Rails.logger.info(e.message)
+        self
+      end
+    end
+  end
 end
