@@ -3,6 +3,6 @@ Spree::TaxonsController.class_eval do
 
   private
   def mixpanel_track_taxon_visit
-    MixpanelTracker.new.track(spree_current_user.try(:id), 'Taxon Show', {name: @taxon.name})
+    MixpanelTracker.new.async.track(spree_current_user.try(:id), 'Taxon Show', {name: @taxon.name})
   end
 end

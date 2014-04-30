@@ -4,7 +4,7 @@ Spree::Order.class_eval do
 
   private
     def mixpanel_track_purchase
-      MixpanelTracker.new.track_charge(user.id, total) if completed? && user
+      MixpanelTracker.new.async.track_charge(user.id, total) if completed? && user
     end
 end
 

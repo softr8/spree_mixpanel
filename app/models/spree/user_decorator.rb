@@ -7,6 +7,6 @@ Spree::User.class_eval do
         '$email' => email,
         "$created" => created_at,
     }
-    MixpanelTracker.new.create_user_profile(id, properties)
+    MixpanelTracker.new.async.create_user_profile(id, properties)
   end
 end

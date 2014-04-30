@@ -1,5 +1,7 @@
 require 'mixpanel-ruby'
+require 'celluloid'
 class MixpanelTracker
+  include Celluloid
 
   def initialize
     project_token = Spree::Mixpanel::Config[:project_token]
@@ -17,21 +19,21 @@ class MixpanelTracker
 
   def create_user_profile user_id, properties = {}
     unless ['development', 'test'].include?(Rails.env)
-      @tracker.people.set(user_id, properties)
+      @tracker.people.set(user_id, properties) rescue nil
     end
   end
 
   # Records a payment to the given user profile
   def track_charge user_id, total, properties = {}
     unless ['development', 'test'].include?(Rails.env)
-      @tracker.people.track_charge(user_id, total, properties)
+      @tracker.people.track_charge(user_id, total, properties) rescue nil
     end
   end
 
   # A call to track is a report that an event has occurred.
   def track user_id, event, properties = {}
     unless ['development', 'test'].include?(Rails.env)
-      @tracker.track(user_id, event, properties)
+      @tracker.track(user_id, event, properties) rescue nil
     end
   end
 

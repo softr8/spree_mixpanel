@@ -5,13 +5,13 @@ Spree::ProductsController.class_eval do
   private
   def mixpanel_track_search
     if params[:keywords]
-      MixpanelTracker.new.track(spree_current_user.try(:id), 'Product search', { keywords: params[:keywords], results: @products.total_count })
+      MixpanelTracker.new.async.track(spree_current_user.try(:id), 'Product search', { keywords: params[:keywords], results: @products.total_count })
     else
-      MixpanelTracker.new.track(spree_current_user.try(:id), 'Products')
+      MixpanelTracker.new.async.track(spree_current_user.try(:id), 'Products')
     end
   end
 
   def mixpanel_track_product_show
-    MixpanelTracker.new.track(spree_current_user.try(:id), 'Product Show', {name: @product.name, price: @product.price.to_s})
+    MixpanelTracker.new.async.track(spree_current_user.try(:id), 'Product Show', {name: @product.name, price: @product.price.to_s})
   end
 end
